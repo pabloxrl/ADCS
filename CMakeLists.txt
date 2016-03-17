@@ -29,6 +29,10 @@ endif()
 # Now simply link your own targets against gtest, gmock,
 # etc. as appropriate
 
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
 add_executable(test_adcs test/test.cpp)
 target_link_libraries(test_adcs gtest gmock)
 
