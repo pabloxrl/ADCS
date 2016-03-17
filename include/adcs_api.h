@@ -4,11 +4,19 @@
 #include "adcs_errno.h"
 
 typedef struct _AdcsOutput {
-  int dupa;
+	int dupa;
 } AdcsOutput;
 
-ADCS_ERROR asdc_api_run_detumbling(AdcsOutput* output);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-ADCS_ERROR asdc_api_run_sunpointing(AdcsOutput* output);
+ADCS_ERROR adcs_api_run_detumbling(AdcsOutput* output);
+
+ADCS_ERROR adcs_api_run_sunpointing(AdcsOutput* output);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* ASDC_API_H */

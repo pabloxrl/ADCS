@@ -33,8 +33,18 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-add_executable(test_adcs test/test.cpp)
+add_executable(test_adcs
+  test/test.cpp 
+  test/api/test_adcs_api.cpp
+  
+  src/api/adcs_api.c
+)
+  
 target_link_libraries(test_adcs gtest gmock)
+target_include_directories(test_adcs PRIVATE
+  test
+  include
+)
 
 add_library(adcs src/api/adcs_api.c)
 target_include_directories(adcs PRIVATE
