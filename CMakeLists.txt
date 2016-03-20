@@ -34,21 +34,29 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_executable(test_adcs
-  test/test.cpp 
+  test/test.cpp
   test/api/test_adcs_api.cpp
-  
+  test/geomagnetic_field/test_adcs_geomagnetic_field.cpp
+
   src/api/adcs_api.c
+  src/geomagnetic_field/adcs_geomagnetic_field.c
 )
-  
+
 target_link_libraries(test_adcs gtest gmock)
 target_include_directories(test_adcs PRIVATE
   test
   include
+  include/geomagnetic_field
 )
 
-add_library(adcs src/api/adcs_api.c)
+add_library(adcs
+  src/api/adcs_api.c
+  src/geomagnetic_field/adcs_geomagnetic_field.c
+)
+
 target_include_directories(adcs PRIVATE
   include
+  src
 )
 
 set(CMAKE_C_FLAGS "-Werror -Wall -Wextra -Wformat=2 -Wswitch-default -Wcast-align -Wpointer-arith -Wbad-function-cast -Wstrict-prototypes -Winline -Wundef -Wnested-externs -Wcast-qual -Wshadow -Wwrite-strings -Wconversion -Wunreachable-code -Wstrict-aliasing=2 -fno-common -fstrict-aliasing -std=c89 -pedantic -O3 -DNDEBUG -funroll-loops")
