@@ -1,5 +1,6 @@
 #include "api/test_adcs_api.h"
 #include "geomagnetic_field/test_adcs_geomagnetic_field.h"
+#include "disturbance_torques/test_adcs_face_div.h"
 
 #include "gtest/gtest.h"
 

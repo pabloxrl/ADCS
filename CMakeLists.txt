@@ -37,6 +37,7 @@ add_executable(test_adcs
   test/test.cpp
   test/api/test_adcs_api.cpp
   test/geomagnetic_field/test_adcs_geomagnetic_field.cpp
+  test/disturbance_torques/test_adcs_face_div.cpp
 
   src/api/adcs_api.c
   src/geomagnetic_field/adcs_geomagnetic_field.c
@@ -48,6 +49,7 @@ target_include_directories(test_adcs PRIVATE
   test
   include
   include/geomagnetic_field
+  include/disturbance_torques
 )
 
 add_library(adcs
