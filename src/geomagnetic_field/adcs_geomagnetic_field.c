@@ -5,11 +5,11 @@
 
 #include <string.h>
 
-#define EXPONENT_LENGTH 5
-#define IGRF_COEFFICIENTS11_TXT "igrf11coeffs.txt"
+#define EXPONENT_LENGTH           5
+#define BASE_LENGTH               11
+#define IGRF_COEFFICIENTS11_TXT   "src/geomagnetic_field/data/igrf11coeffs.txt"
 
 double parse_exponent_number(char* str) {
-
   if (strcmp(str, "e+000") == 0) {
     return 1;
   }
@@ -57,15 +57,14 @@ double parse_base_number(char* str) {
 }
 
 void parse_number(double* coefficients, char buffer[], size_t offset) {
-
-  char base_number_str[11];
+  char base_number_str[BASE_LENGTH];
   char exponent_number_str[EXPONENT_LENGTH];
   char *pch;
 
   double base_number;
   double exponent_number;
 
-  memset(base_number_str, 0, 11);
+  memset(base_number_str, 0, BASE_LENGTH);
   strncpy(base_number_str, buffer, strlen(buffer) - EXPONENT_LENGTH);
 
   base_number = parse_base_number(base_number_str);
@@ -80,7 +79,6 @@ void parse_number(double* coefficients, char buffer[], size_t offset) {
 }
 
 ADCS_ERROR adcs_geomagnetic_field_get_igrf_coefficients(double* coefficients) {
-
   FILE *fp;
   char buffer[30];
   size_t n = 0;

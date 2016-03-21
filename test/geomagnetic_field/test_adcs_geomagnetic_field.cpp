@@ -69,6 +69,12 @@ TEST(Test_ADCS_Geomagnetic_Field, parse_negative_exponents_from_coefficients)
   EXPECT_EQ(0.0001, parse_exponent_number(str4));
 }
 
+TEST(Test_ADCS_Geomagnetic_Field, parse_unsupported_exponents_from_coefficients)
+{
+  char str1[] = "e-006";
+  EXPECT_EQ(-1, parse_exponent_number(str1));
+}
+
 TEST(Test_ADCS_Geomagnetic_Field, parse_string_number_to_double)
 {
   char str0[] = "123.456";
