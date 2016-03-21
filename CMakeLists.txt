@@ -40,6 +40,7 @@ add_executable(test_adcs
 
   src/api/adcs_api.c
   src/geomagnetic_field/adcs_geomagnetic_field.c
+  src/disturbance_torques/adcs_face_div.c
 )
 
 target_link_libraries(test_adcs gtest gmock)
@@ -52,6 +53,7 @@ target_include_directories(test_adcs PRIVATE
 add_library(adcs
   src/api/adcs_api.c
   src/geomagnetic_field/adcs_geomagnetic_field.c
+  src/disturbance_torques/adcs_face_div.c
 )
 
 target_include_directories(adcs PRIVATE
